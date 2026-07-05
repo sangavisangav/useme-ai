@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: useme-ai-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install --prefix server
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: GROQ_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+
+  - type: static
+    name: useme-ai-frontend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build --prefix client
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://useme-ai-backend.onrender.com
