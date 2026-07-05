@@ -1,0 +1,14 @@
+{
+  "name": "useme-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UseMe AI - AI powered interview prep agent (mock questions, resume analysis, voice input in Tamil/English/Tanglish)",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -k -n SERVER,CLIENT -c green,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "postinstall": "npm run install:all"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
